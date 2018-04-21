@@ -142,6 +142,7 @@ Note:
 
 ```python
  - Add sudo code policy iterat
+ TODO: paste train(saples)
 ```
 
 Note:
@@ -222,20 +223,58 @@ Note:
   - This ration is the proportion of times i choose a diff. action / time i picked that action
 - This control strategy will prefer action with higher prior probability
 
+### Policy Evaluation a.k.a. playing against yourself
 
+### Self play - why?
+![mcts](img/openai.jpg)
+How can you understand how well you are doing?
 
-### Policy Evaluation
+### Self play - what is it?
+* Play a few games against your past self
+* As the Yous play battle, observe the fight
+* Use those experiences to improve further
 
+### Self play - how is it used in AlphaZero?
+<code/>
 
-### Training
+### Self play - as seen on?
+* soccer
+  * goal keeper
+* multi agent games
+  * other agents gathering food
 
+### Self play - as seen on?
+<gif di sumo/>
 
-### Architecture
+### The deeper side of RL
 
+### Deep Learning - abstract features
 
-### Demo
+Steal from: https://www.kdnuggets.com/wp-content/uploads/deep-learning.png
+* In general Deep Learning is a tool to go from raw data to abstact features
+* In AlphaZero we want to ~~classify cats~~ find the best moves.
+* More specifically the best move (pi(s)) and how well we are doing (v(s))
+Note: i liek cakese
 
+### Deep Learning - where are the layers? 1/523
+https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
 
+### Deep Learning - where are the layers? 2/523
+https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+
+### Deep Learning - where are the layers? it's-going-to-take-a-while/523
+https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+
+### Deep Learning - where are the layers? lol joking/523
+https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+
+### Loss function - what makes the model happy?
+* (v(s) - v) - pi1(s)*log(pi2(s)) + c * ||theta||
+* do more of the good moves
+* do less of the bad moves
+* do not change too fast
+
+### To the code!
 
 ### Q&A
 
