@@ -236,6 +236,7 @@ Note:
 we can't have humans in the loop, that's slow
 we can't have other robots, that's what we want to achieve
 
+
 ### Self play - what is it?
 * Clone yourself and fight!
 * As the Yous battle, observe the fight
@@ -244,6 +245,7 @@ Note:
 easy, clone yoruself
 observe the fight
 learn from that
+
 
 ### Self play - how is it used in AlphaZero?
 ```python
@@ -268,8 +270,10 @@ learn from that
 * multi agent games
   * other agents gathering food
 
+
 ### Self play - as seen on?
 <gif di sumo/>
+
 
 
 ### The deeper side of RL
@@ -285,32 +289,33 @@ Note:
 DL goes from pixels to edges to face detectors
 how to abstract game board to better play the game
 
+
 ### Deep Learning - where are the layers? 1/523
-![mcts](img/network1.jpg)
+![](img/network1.jpg)
 
 
 ### Deep Learning - where are the layers? 2/523
-![mcts](img/network2.jpg)
+![](img/network2.jpg)
 
 
 ### it's-going-to-take-a-while/523
-![mcts](img/network3.jpg)
+![](img/network3.jpg)
 
 
 ### lol joking/523
-![mcts](img/network_heads.jpg)
+![](img/network_heads.jpg)
 
 
 ### what's a residual?
-![mcts](img/residual.jpg)
+![](img/residual.jpg)
 
 
 ### value head
-![mcts](img/value_head.jpg)
+![](img/value_head.jpg)
 
 
 ### policy head
-![mcts](img/policy_head.jpg)
+![](img/policy_head.jpg)
 
 
 ### Loss function - what makes the model happy?
