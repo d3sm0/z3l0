@@ -226,27 +226,27 @@ Note:
 
 
 
-### Policy Evaluation playing against yourself
+### Self Play
 
 
-### Self play - why?
+### Why?
 How can you understand how well you are doing?
 Note:
 we can't have humans in the loop, that's slow
 we can't have other robots, that's what we want to achieve
 
 
-### Self play - what is it?
+### What is it?
 * Clone yourself and fight!<!-- .element: class="fragment" -->
 * As the Yous battle, observe the fight<!-- .element: class="fragment" -->
-* Use those experiences to improve further
+* Use those experiences to improve further<!-- .element: class="fragment" -->
 Note:
 easy, clone yoruself
 observe the fight
 learn from that
 
 
-### Self play - how is it used in AlphaZero?
+### How is it used in AlphaZero?
 ```python
    board_snapshot = game.reset()
    while not terminal:
@@ -263,12 +263,11 @@ learn from that
 ```
 
 
-### Self play - as seen on?
-* Robots playing soccer<!-- .element: class="fragment" -->
-* Robots gathering food faster than other robots<!-- .element: class="fragment" -->
+### Also seen on?
+* Robots playing soccer
+* Robots gathering food faster than other robot
 
-
-### Self play - sumo!
+### Also seen on: sumo!
 ![](img/output.gif)
 
 
@@ -276,13 +275,14 @@ learn from that
 ### The deeper side of RL
 
 
-### Deep Learning - abstract features
+###
 
 ![](img/deep-learning-abstr.png)
 * In general Deep Learning is a tool to go from raw data to abstact features<!-- .element: class="fragment" -->
-* In AlphaZero we want to ~~classify cats~~ find the best moves.<!-- .element: class="fragment" -->
+* In AlphaZero we want to ~~classify cats~~ find the best moves. <!-- .element: class="fragment" -->
 * More specifically the best move (pi(s)) and how well we are doing (v(s))<!-- .element: class="fragment" -->
 Note:
+Abract features
 DL goes from pixels to edges to face detectors
 how to abstract game board to better play the game
 
@@ -320,11 +320,10 @@ fast forwarding...
 
 
 ### Loss function - what makes the model happy?
-* (v(s) - v) - pi1(s)*log(pi2(s)) + c * ||theta||
-* be more right about <!-- .element: class="fragment" -->
-* do more of the good moves<!-- .element: class="fragment" -->
-* do less of the bad moves<!-- .element: class="fragment" -->
-* do not change too fast<!-- .element: class="fragment" -->
+* (v(s) - v) - pi1(s)*log(pi2(s)) + c * ||\theta||
+* be more right about your analysis <!-- .element: class="fragment" -->
+* do not change your mind too much<!-- .element: class="fragment" -->
+* standard neural networks regularization<!-- .element: class="fragment" -->
 
 
 ### To the code!
