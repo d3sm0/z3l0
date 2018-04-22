@@ -290,34 +290,34 @@ how to abstract game board to better play the game
 
 
 ### Deep Learning - where are the layers? 1/523
-![](network1.jpg)
+![](network1.png)
 
 
 ### Deep Learning - where are the layers? 2/523
-![](network2.jpg)
+![](network2.png)
 
 
 ### it's-going-to-take-a-while/523
-![](network3.jpg)
+![](network3.png)
 
 
 ### lol joking/523
 fast forwarding...
 
 ### lol joking/523
-![](network_heads.jpg)
+![](network_heads.png)
 
 
 ### what's a residual?
-![](residual.jpg)
+![](residual.png)
 
 
 ### value head
-![](value_head.jpg)
+![](value_head.png)
 
 
 ### policy head
-![](policy_head.jpg)
+![](policy_head.png)
 
 
 ### Loss function - what makes the model happy?
