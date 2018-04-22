@@ -1,7 +1,10 @@
 ## [`$\alpha_0$`] t0 3l0
 
-
-_"For a true AI isn't measured by the size of its tree, but by the precision of its moves." Filottete_ 
+Note:
+- Introduction
+  - we are student in sapienza and "researchers" in Reinforcemnet learning
+  - Just to get an idea how many of you have heard about reinforcement learning? OK I see, the presentation may be a bit tecnical at some point, so if you feel something is not clear, feel free to ask questions at the end of the talk or right after, we will be happy to talk with you. Ready?
+Every presentation should start with a random quote, and here one that comesfrom one of th greatest trainer of all the time
 
 
 ## Outline
@@ -12,8 +15,12 @@ _"For a true AI isn't measured by the size of its tree, but by the precision of 
 3. Policy Iteration
 4. Policy Improvement (Math alert!)
 5. Policy Evaluation
-6. Code and demo
+6. The deep side of AlphaZero
+7. Code and demo
 
+
+
+_"For a true AI isn't measured by the size of its tree, but by the precision of its moves." Filottete_ 
 
 
 ![go](img/go.jpg)
@@ -24,22 +31,21 @@ Note:
 - The winner is the one who conquer the larger region
 
 
+* Go is constructive <!-- .element: class="fragment" -->
+* Humans describe more as intuititive game<!-- .element: class="fragment" -->
 * <!-- .element: class="fragment" -->`$10^{170}$` possible states
 * <!-- .element: class="fragment" -->`$10^{360}$` possible games for each starting state
-* 250 legal moves from each state<!-- .element: class="fragment" -->
-* 150 moves for each match <!-- .element: class="fragment" -->
-
 Note:
-- state_space complexity 10^170 (estimated numer of possible board config)
-- search complexity in time 10^360 (the number of games that can be played for each starting state)
-- branch ~ 250 av of legal moves
-- depth ~ 150 av. lenght of the game
+From human perspective go is a costructive game, while chess is destructive, and it's easy to build a strategy. While GO is intuitive. Those two features makes very hard to build an evaluatian funtionl
 
 
-![branch](img/branch_tic.jpg)
-
-
-![branch](img/branch_go.png)
+* Adversarial<!-- .element: class="fragment" -->
+* Fully observable<!-- .element: class="fragment" -->
+* Deterministic<!-- .element: class="fragment" -->
+Note:
+From a research perpsective instead we call the environment...
+- Deterministic means that we can see that with certainity the stone is on the goban.
+- Fully observable that is that each snapshot of the goban, allow us to plan what do next.
 
 
 
@@ -49,68 +55,49 @@ Note:
 _"The mystery of Go, the ancient game that computers still can't win" - Wired 2014_
 
 
-* Go is constructive<!-- .element: class="fragment" -->
-* Difficult to build an evaluation functional<!-- .element: class="fragment" -->
-* Humans describe more as intuititive game<!-- .element: class="fragment" -->
-
-Note:
-- Go is constructive instead of destructive
-- Go is hard because is difficult to build an evaluation function of each board position
-thus alpha-beta search doesn't work.
-- Even humans describe as intuition
-
-
-* Adversarial<!-- .element: class="fragment" -->
-* Deterministic<!-- .element: class="fragment" -->
-* Fully observable<!-- .element: class="fragment" -->
-
-Note:
-- MCTS with deep neural network works very well because of the averaging of the errors, while alpha_beta search propagates the largest approximation error up in the tree.
-
-
 ### CrazyStone
 
 ![crazy_stone](img/crazy_stone.gif)
 
 Note:
-- The first to use UCT
-- Three pruning and local pattern recognition
+- The first mcts to use UCT
+- Local pattern recognition to find go local pattern
+- Something that (spoiler) today we do with DL
 - Achived 6 dan in 2014 at the time of the wired article
 
 
 ![alphago](img/alpha_go_logo.png)
 
+Note:
+- 15 march 2016 alpha go came along
+- Use deep neural nets for valuea nd policy
+- It supervised pre train from 30 milion of position from KGS
+- and adjusted with self-play
+
 
 ![alphago](img/alpha_lee.jpg)
 
 Note:
-TODO!
-- First to use Neural networks
-- Value network and Polcy network pretrained from high quality data
-- It has been trained for a month on 36 GPUs
+- 4-1 15 march 2016
+- alpha go has elo 1.5x the strenght of crazy stone and at 5/9 of proffessioanal human.
+- 40 threads, 48 CPUs, 8 GPUs for several months
 
 
 ![alphago_zero](img/alphago_zero.png)
 
+Note:
+- No pre training
+- Single huge neural network for both policy and value
+- 4 TPU 72h to beat alpha Go
+
 
 ### AlphaGo Zero vs AlphaZero
-
-- No data augmentation
-- No threshold update
-- Diff. exploration noise for each game
-
-Note:
-- Exploit simmetries in board position as rotation and reflection
-- Value function optimize the expected outcome and not the probability of winning
-- No update threshold update
-- Exploration Noise from a dirchlet.
-for which if alpha -> 0 the area under the curve becomes conconcetrade, while alpha -> it flattens out, ensuring a larger exploration. Is like a multivariate of the beta (in go we have the smallest noise, while in chess the largest) 
-The reason for this could actually be the fact that the local shift of board position is small in go, and could be very large in chess.
-
 
 ![zero](img/zero.png)
 
 Note:
+- Destroy stockfish in 100 games, 28 win and 72 draws
+- Beat alpha go zero 60/40 
 - if we search in the appropriate way we don't need "prior knowledge" embedded in the method, but in the architecture
 
 
@@ -124,18 +111,67 @@ Note:
 - The basic idea of reinforcement learning is given an environment the agent can interact in a sequential way. For each step, it take an action and observe a next step, and a reward of this action.
 
 
-`$v_\pi(s) = E_{\pi}\left[\sum_t \gamma^t R_t \mid S_t\right] $`<!-- .element: class="fragment" -->
+## Example
 
-where:
+![icecream](img/pls_icecream.jpg)
+
+Note:
+- suppose i don't have access to the internet, what would you do? well you go out and ask people nearby
+- the more you ask the more you get inforamtion about where the icecream place is
+
+
+![icecream](img/gelato.jpg)
+
+Note:
+- you keep walking around until you see find him...super happy with his icecream, and then..there you go...the holigrail
+
+
+![icecream](img/entry.jpg)
+
+
+## Notice
+
+
+* The agent defines the part of the world that wants to explore<!-- .element: class="fragment" -->
+* And it evaluates the goodness of its behaviors, based on how much reward is getting<!-- .element: class="fragment" -->
+
+Note:
+* The agent defines the part of the world that wants to explore
+* And it evaluates the goodness of its behaviors, based on how much reward is getting
+
 
 `$\pi(a\mid s) = P(a \mid s) \ \ \forall s \in S$`<!-- .element: class="fragment" -->
 
+and:
+
+`$v_\pi(s) = E_{\pi}\left[\sum_t \gamma^t R_t \mid S_t\right] $`<!-- .element: class="fragment" -->
+
 Note:
-- Let pi be a probability distribution of chosing a specific action given a state
-- The goal of the agent is to find a way to maximize the the cumulative reward
-- Which can be expressed as V, which play the role of the evaluation function
 - Notice this expectation depends both on the policy and on the transition dynamics of the env
 
+
+```python 
+def value(state):
+  """
+  Black magic
+  """
+  return v
+```
+
+Note:
+- In a more pythonic way, we have a function that given the state of the environemnt it tells us how good it is
+
+
+```python
+def policy(state):
+  """
+  White magic
+  """
+  return reasonable_actions
+```
+Note:
+- and given state we get all meaninigful actions that we can take, for example left right up or down and so on
+- Both of them are neural network but it can be any kind of mapping
 
 ## Policy Iteration
 
@@ -146,12 +182,9 @@ Note:
 
 Note:
   - the question now become, how can we find a good policy? 
-  - intuitively, if the agent is able to get to a state for which its value is higher than otherwise, we can be sure that the new policy is better at least in one point than the previous one.   
-  - we can then evaluate the new policy using the policy evaluation (prediction) step, and repeat until convergence
-  - Notice that the key points that manages learning are a good capability of the value function and a reasonable way to choose some actions taht are better than the previous one. We now focus ont he policy improvement phase
-  - Notice also that in the policy improvement we have two competing forces and cooperative forces:
-    1. making the policy greedy wrt the current value function, will makes the value function incorrect because ...?
-    2. and updating the value function makes the policy no longer better (greedy)
+  - Intuitveley:
+    - for each possible future, try a move which would made you win! (Policy improvement)
+    - Once you find it, play it and see how good you got (Policy evaluation)
 
 
 
@@ -172,29 +205,19 @@ MCTS is an algorithm to perform sampling based lookahead search.
 ![homer](img/homer.gif)
 
 
-```python
-
- - Add sudo code MCTS
-```
-
-Note:
-- given a simulator, which we have, we can build a tree in selective manner starting from a root state and proceding forward.
-
-
 ![mcts](img/mcts_go_2.png)
 
 Note:
+  - Given  a policy, could be random
   - Select a state from the simulator
-  - Expansion and Evaluate (notice that while usually we have a random policy that continues the rollout, here we have a neural network which taka transformation of the state and output a value of the leaf node) (why this actually make any fucking sense?)
-  - Backup
+  - Start the simulation until the a terminal conditon is reached
+  - Once you finished, backup the values of each node in the tree
 
 
 With the backup operation we keep track of:
 
 * N(s,a) visit count
-* W(s,a) total action value
 * Q(s,a) mean action value
-* P(s,a) prior probability
 
 Note:
 Ok we got a "good way to explore the state space, but how do we select exlporatory action?
@@ -207,13 +230,12 @@ Ok we got a "good way to explore the state space, but how do we select exlporato
 * Bandits <!-- .element: class="fragment" -->
 
 Note:
-- eps-greedy could work but we want something that instead of trying action at random, slect action to explore in a "meanigful" way as for example according to their potential of being "good actions"
-- This idea is captured in the UCB1, by shifting the current estimate, of this positive factor which tells what is the upper bound of the current estimate of the q value.
+- eps-greedy could work but we want something that instead of trying action at random,
+- select action that have good potential
+  - i.e. actions for which my current value estimate is uncertain
 
 
-![bandit](img/mab.jpg)
-
-`$ c P(s,a) \frac{\sqrt{\sum_b N(s,b) }}{1 + N(s,a)}  $`<!-- .element: class="fragment" -->
+`$ Q(s,a) + c P(s,a) \frac{\sqrt{\sum_b N(s,b) }}{1 + N(s,a)}  $`<!-- .element: class="fragment" -->
 
 Note:
 - Notice this upper bound is made of 3 components:
