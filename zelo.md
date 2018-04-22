@@ -248,66 +248,73 @@ Note:
 
 
 
+## Policy Evaluation
 ### Self Play
 
 
-### Why?
 How can you understand how well you are doing?
 Note:
 we can't have humans in the loop, that's slow
 we can't have other robots, that's what we want to achieve
 
 
-### What is it?
-* Clone yourself and fight!<!-- .element: class="fragment" -->
-* As the Yous battle, observe the fight<!-- .element: class="fragment" -->
-* Use those experiences to improve further<!-- .element: class="fragment" -->
+1. Clone yourself and fight!<!-- .element: class="fragment" -->
+2. As the Yous battle, observe the fight<!-- .element: class="fragment" -->
+3. Use those experiences to improve further<!-- .element: class="fragment" -->
 Note:
 easy, clone yoruself
 observe the fight
 learn from that
 
 
+![](img/output.gif)
+
+Note:
+board games boring
+
+
 ### How is it used in AlphaZero?
 ```python
-   board_snapshot = game.reset()
+   board = game.reset()
    while not terminal:
-     action = player_mcts.pick_move(board_snapshot)
-     board_snapshot, reward, terminal, opponent_action = game.step(action)
-     training_samples.append((b, current_player_id, action))
-     training_samples.append((b, opponent_player_id, opponent_action))
-     
-   training_samples = []
-   for board, action, player_id, reward in training_samples:
-       subjective_reward = 1 if player_id == game.winner_id else -1
-       training_samples.append((board, action, subjective_reward))
-   return training_samples
+     act = player_mcts.pick_move(board)
+     board, r, terminal, opp_act = game.step(action)
+     training_samples.append((board, player_id, act))
+     training_samples.append((board, opp_id, opp_act))
+  return training_samples
 ```
 
 
-### Also seen on?
-* Robots playing soccer
-* Robots gathering food faster than other robot
 
-### Also seen on: sumo!
-![](img/output.gif)
+## The deeper side of RL
 
-
-
-### The deeper side of RL
-
-
-###
 
 ![](img/deep-learning-abstr.png)
-* In general Deep Learning is a tool to go from raw data to abstact features<!-- .element: class="fragment" -->
-* In AlphaZero we want to ~~classify cats~~ find the best moves. <!-- .element: class="fragment" -->
-* More specifically the best move (pi(s)) and how well we are doing (v(s))<!-- .element: class="fragment" -->
+
 Note:
+* In general Deep Learning is a tool to go from raw data to abstact features
+
+
+In AlphaZero we want to ~~classify cats~~ find the best moves
+
+
+`$ \pi(s) \text{  and } v(s)$ `
+
+Note:
+More specifically the best move (pi(s)) and how well we are doing (v(s))
+
 Abract features
 DL goes from pixels to edges to face detectors
 how to abstract game board to better play the game
 
+
+### The superstar of the newtork
+
+
+![](residual.png)
+
+Note:
+- You can't be worse than the original so bring the original along
 
 ### Deep Learning - where are the layers? 1/523
 ![](network1.png)
@@ -329,10 +336,6 @@ fast forwarding...
 ![](network_heads.png)
 
 
-### what's a residual?
-![](residual.png)
-
-
 ### value head
 ![](value_head.png)
 
@@ -342,10 +345,13 @@ fast forwarding...
 
 
 ### Loss function - what makes the model happy?
-* (v(s) - v) - pi1(s)*log(pi2(s)) + c * ||\theta||
-* be more right about your analysis <!-- .element: class="fragment" -->
-* do not change your mind too much<!-- .element: class="fragment" -->
-* standard neural networks regularization<!-- .element: class="fragment" -->
+
+`$ (z-v(s))^2 - \mathbf{\pi \log \mathbf{p}} + c ||\theta||$`
+
+Note:
+* be more right about your analysis
+* do not change your mind too much
+* standard neural networks regularization
 
 
 ### To the code!
@@ -361,9 +367,14 @@ https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
 ![filottete](img/filottete.jpg)
 
 
+### Contacts
+
+[manuel.delverme@gmail.com](mailto:manuel.delverme@gmail.com)
+[simone.totaro@gmail.com](mailto:simone.totaro@gmail.com)
+
 
 ### Thank you!
 
 ![mosc](img/mosc.jpg)
 
-[github/mosc](https://github.com/d3sm0/zelo)
+[github/mosc](https://github.com/d3sm0/z3l0)
