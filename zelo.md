@@ -19,6 +19,9 @@ Every presentation should start with a random quote, and here one that comesfrom
 7. Code and demo
 
 
+![](img/shall_we_begin.png)
+
+
 
 _"For a true AI isn't measured by the size of its tree, but by the precision of its moves." Filottete_ 
 
@@ -173,16 +176,19 @@ Note:
 - and given state we get all meaninigful actions that we can take, for example left right up or down and so on
 - Both of them are neural network but it can be any kind of mapping
 
+
+
 ## Policy Iteration
 
 
 ```python
- - Add sudo code policy iterat
- TODO: paste train(saples)
+ #TODO @Manuel: Add code here
 ```
 
+
+![](img/policy_iter.png)
 Note:
-  - the question now become, how can we find a good policy? 
+  - how can we find a good policy? 
   - Intuitveley:
     - for each possible future, try a move which would made you win! (Policy improvement)
     - Once you find it, play it and see how good you got (Policy evaluation)
