@@ -237,8 +237,8 @@ we can't have other robots, that's what we want to achieve
 
 
 ### Self play - what is it?
-* Clone yourself and fight!
-* As the Yous battle, observe the fight
+* Clone yourself and fight!<!-- .element: class="fragment" -->
+* As the Yous battle, observe the fight<!-- .element: class="fragment" -->
 * Use those experiences to improve further
 Note:
 easy, clone yoruself
@@ -264,14 +264,12 @@ learn from that
 
 
 ### Self play - as seen on?
-* soccer
-  * goal keeper
-* multi agent games
-  * other agents gathering food
+* Robots playing soccer<!-- .element: class="fragment" -->
+* Robots gathering food faster than other robots<!-- .element: class="fragment" -->
 
 
-### Self play - as seen on?
-<gif di sumo/>
+### Self play - sumo!
+![](img/output.gif)
 
 
 
@@ -281,9 +279,9 @@ learn from that
 ### Deep Learning - abstract features
 
 ![](img/deep-learning-abstr.png)
-* In general Deep Learning is a tool to go from raw data to abstact features
-* In AlphaZero we want to ~~classify cats~~ find the best moves.
-* More specifically the best move (pi(s)) and how well we are doing (v(s))
+* In general Deep Learning is a tool to go from raw data to abstact features<!-- .element: class="fragment" -->
+* In AlphaZero we want to ~~classify cats~~ find the best moves.<!-- .element: class="fragment" -->
+* More specifically the best move (pi(s)) and how well we are doing (v(s))<!-- .element: class="fragment" -->
 Note:
 DL goes from pixels to edges to face detectors
 how to abstract game board to better play the game
@@ -323,10 +321,10 @@ fast forwarding...
 
 ### Loss function - what makes the model happy?
 * (v(s) - v) - pi1(s)*log(pi2(s)) + c * ||theta||
-* be more right about 
-* do more of the good moves
-* do less of the bad moves
-* do not change too fast
+* be more right about <!-- .element: class="fragment" -->
+* do more of the good moves<!-- .element: class="fragment" -->
+* do less of the bad moves<!-- .element: class="fragment" -->
+* do not change too fast<!-- .element: class="fragment" -->
 
 
 ### To the code!
