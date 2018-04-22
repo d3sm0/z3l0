@@ -230,7 +230,6 @@ Note:
 
 
 ### Self play - why?
-![mcts](img/openai.jpg)
 How can you understand how well you are doing?
 Note:
 we can't have humans in the loop, that's slow
@@ -281,7 +280,7 @@ learn from that
 
 ### Deep Learning - abstract features
 
-Steal from: https://www.kdnuggets.com/wp-content/uploads/deep-learning.png
+![](img/deep-learning-abstr.png)
 * In general Deep Learning is a tool to go from raw data to abstact features
 * In AlphaZero we want to ~~classify cats~~ find the best moves.
 * More specifically the best move (pi(s)) and how well we are doing (v(s))
@@ -291,31 +290,34 @@ how to abstract game board to better play the game
 
 
 ### Deep Learning - where are the layers? 1/523
-![](img/network1.jpg)
+![](network1.jpg)
 
 
 ### Deep Learning - where are the layers? 2/523
-![](img/network2.jpg)
+![](network2.jpg)
 
 
 ### it's-going-to-take-a-while/523
-![](img/network3.jpg)
+![](network3.jpg)
 
 
 ### lol joking/523
-![](img/network_heads.jpg)
+fast forwarding...
+
+### lol joking/523
+![](network_heads.jpg)
 
 
 ### what's a residual?
-![](img/residual.jpg)
+![](residual.jpg)
 
 
 ### value head
-![](img/value_head.jpg)
+![](value_head.jpg)
 
 
 ### policy head
-![](img/policy_head.jpg)
+![](policy_head.jpg)
 
 
 ### Loss function - what makes the model happy?
