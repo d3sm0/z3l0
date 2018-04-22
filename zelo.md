@@ -178,6 +178,7 @@ Note:
 
 ```python
  - Add sudo code policy iterat
+ TODO: paste train(saples)
 ```
 
 Note:
@@ -246,22 +247,119 @@ Note:
 
 
 
-### Policy Evaluation
+
+### Self Play
 
 
-### Training
+### Why?
+How can you understand how well you are doing?
+Note:
+we can't have humans in the loop, that's slow
+we can't have other robots, that's what we want to achieve
 
 
-### Architecture
+### What is it?
+* Clone yourself and fight!<!-- .element: class="fragment" -->
+* As the Yous battle, observe the fight<!-- .element: class="fragment" -->
+* Use those experiences to improve further<!-- .element: class="fragment" -->
+Note:
+easy, clone yoruself
+observe the fight
+learn from that
 
 
-### Demo
+### How is it used in AlphaZero?
+```python
+   board_snapshot = game.reset()
+   while not terminal:
+     action = player_mcts.pick_move(board_snapshot)
+     board_snapshot, reward, terminal, opponent_action = game.step(action)
+     training_samples.append((b, current_player_id, action))
+     training_samples.append((b, opponent_player_id, opponent_action))
+     
+   training_samples = []
+   for board, action, player_id, reward in training_samples:
+       subjective_reward = 1 if player_id == game.winner_id else -1
+       training_samples.append((board, action, subjective_reward))
+   return training_samples
+```
+
+
+### Also seen on?
+* Robots playing soccer
+* Robots gathering food faster than other robot
+
+### Also seen on: sumo!
+![](img/output.gif)
+
+
+
+### The deeper side of RL
+
+
+###
+
+![](img/deep-learning-abstr.png)
+* In general Deep Learning is a tool to go from raw data to abstact features<!-- .element: class="fragment" -->
+* In AlphaZero we want to ~~classify cats~~ find the best moves. <!-- .element: class="fragment" -->
+* More specifically the best move (pi(s)) and how well we are doing (v(s))<!-- .element: class="fragment" -->
+Note:
+Abract features
+DL goes from pixels to edges to face detectors
+how to abstract game board to better play the game
+
+
+### Deep Learning - where are the layers? 1/523
+![](network1.png)
+
+
+### Deep Learning - where are the layers? 2/523
+![](network2.png)
+
+
+### it's-going-to-take-a-while/523
+![](network2.png)
+
+
+### lol joking/523
+fast forwarding...
+
+
+### network heads/523
+![](network_heads.png)
+
+
+### what's a residual?
+![](residual.png)
+
+
+### value head
+![](value_head.png)
+
+
+### policy head
+![](policy_head.png)
+
+
+### Loss function - what makes the model happy?
+* (v(s) - v) - pi1(s)*log(pi2(s)) + c * ||\theta||
+* be more right about your analysis <!-- .element: class="fragment" -->
+* do not change your mind too much<!-- .element: class="fragment" -->
+* standard neural networks regularization<!-- .element: class="fragment" -->
+
+
+### To the code!
+main:
+https://gist.github.com/manuel-delverme/36f9fd220989903274c4badf83c0f880
+train:
+https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
 
 
 
 ### Q&A
 
 ![filottete](img/filottete.jpg)
+
 
 
 ### Thank you!
