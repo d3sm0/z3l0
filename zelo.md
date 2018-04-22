@@ -298,13 +298,14 @@ how to abstract game board to better play the game
 
 
 ### it's-going-to-take-a-while/523
-![](network3.png)
+![](network2.png)
 
 
 ### lol joking/523
 fast forwarding...
 
-### lol joking/523
+
+### network heads/523
 ![](network_heads.png)
 
 
@@ -327,15 +328,19 @@ fast forwarding...
 * do less of the bad moves
 * do not change too fast
 
+
 ### To the code!
 main:
 https://gist.github.com/manuel-delverme/36f9fd220989903274c4badf83c0f880
 train:
 https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
 
+
+
 ### Q&A
 
 ![filottete](img/filottete.jpg)
+
 
 
 ### Thank you!
