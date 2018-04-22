@@ -223,19 +223,38 @@ Note:
   - This ration is the proportion of times i choose a diff. action / time i picked that action
 - This control strategy will prefer action with higher prior probability
 
+
+
+
 ### Policy Evaluation a.k.a. playing against yourself
+
 
 ### Self play - why?
 ![mcts](img/openai.jpg)
 How can you understand how well you are doing?
+
 
 ### Self play - what is it?
 * Play a few games against your past self
 * As the Yous play battle, observe the fight
 * Use those experiences to improve further
 
+
 ### Self play - how is it used in AlphaZero?
-<code/>
+```python
+   board_snapshot = game.reset()
+   while not terminal:
+     action = player_mcts.pick_move(board_snapshot)
+     board_snapshot, reward, terminal, opponent_action = game.step(action)
+     training_samples.append((b, current_player_id, action))
+     training_samples.append((b, opponent_player_id, opponent_action))
+     
+   training_samples = []
+   for board, action, player_id, reward in training_samples:
+       subjective_reward = 1 if player_id == game.winner_id else -1
+       training_samples.append((board, action, subjective_reward))
+   return training_samples
+```
 
 ### Self play - as seen on?
 * soccer
@@ -246,7 +265,9 @@ How can you understand how well you are doing?
 ### Self play - as seen on?
 <gif di sumo/>
 
+
 ### The deeper side of RL
+
 
 ### Deep Learning - abstract features
 
@@ -256,17 +277,22 @@ Steal from: https://www.kdnuggets.com/wp-content/uploads/deep-learning.png
 * More specifically the best move (pi(s)) and how well we are doing (v(s))
 Note: i liek cakese
 
+
 ### Deep Learning - where are the layers? 1/523
 https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+
 
 ### Deep Learning - where are the layers? 2/523
 https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
 
+
 ### Deep Learning - where are the layers? it's-going-to-take-a-while/523
 https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
 
+
 ### Deep Learning - where are the layers? lol joking/523
 https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+
 
 ### Loss function - what makes the model happy?
 * (v(s) - v) - pi1(s)*log(pi2(s)) + c * ||theta||
@@ -275,6 +301,10 @@ https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
 * do not change too fast
 
 ### To the code!
+main:
+https://gist.github.com/manuel-delverme/36f9fd220989903274c4badf83c0f880
+train:
+https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
 
 ### Q&A
 
