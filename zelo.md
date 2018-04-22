@@ -226,19 +226,24 @@ Note:
 
 
 
-### Policy Evaluation a.k.a. playing against yourself
+### Policy Evaluation playing against yourself
 
 
 ### Self play - why?
 ![mcts](img/openai.jpg)
 How can you understand how well you are doing?
-
+Note:
+we can't have humans in the loop, that's slow
+we can't have other robots, that's what we want to achieve
 
 ### Self play - what is it?
-* Play a few games against your past self
-* As the Yous play battle, observe the fight
+* Clone yourself and fight!
+* As the Yous battle, observe the fight
 * Use those experiences to improve further
-
+Note:
+easy, clone yoruself
+observe the fight
+learn from that
 
 ### Self play - how is it used in AlphaZero?
 ```python
@@ -255,6 +260,7 @@ How can you understand how well you are doing?
        training_samples.append((board, action, subjective_reward))
    return training_samples
 ```
+
 
 ### Self play - as seen on?
 * soccer
@@ -275,27 +281,41 @@ Steal from: https://www.kdnuggets.com/wp-content/uploads/deep-learning.png
 * In general Deep Learning is a tool to go from raw data to abstact features
 * In AlphaZero we want to ~~classify cats~~ find the best moves.
 * More specifically the best move (pi(s)) and how well we are doing (v(s))
-Note: i liek cakese
-
+Note:
+DL goes from pixels to edges to face detectors
+how to abstract game board to better play the game
 
 ### Deep Learning - where are the layers? 1/523
-https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+![mcts](img/network1.jpg)
 
 
 ### Deep Learning - where are the layers? 2/523
-https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+![mcts](img/network2.jpg)
 
 
-### Deep Learning - where are the layers? it's-going-to-take-a-while/523
-https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+### it's-going-to-take-a-while/523
+![mcts](img/network3.jpg)
 
 
-### Deep Learning - where are the layers? lol joking/523
-https://applied-data.science/static/main/res/alpha_go_zero_cheat_sheet.png
+### lol joking/523
+![mcts](img/network_heads.jpg)
+
+
+### what's a residual?
+![mcts](img/residual.jpg)
+
+
+### value head
+![mcts](img/value_head.jpg)
+
+
+### policy head
+![mcts](img/policy_head.jpg)
 
 
 ### Loss function - what makes the model happy?
 * (v(s) - v) - pi1(s)*log(pi2(s)) + c * ||theta||
+* be more right about 
 * do more of the good moves
 * do less of the bad moves
 * do not change too fast
