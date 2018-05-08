@@ -301,8 +301,6 @@ observe our action and the one of our foe
 ### To the code!
 main:
 https://gist.github.com/manuel-delverme/36f9fd220989903274c4badf83c0f880
-train:
-https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
 
 
 
@@ -316,7 +314,6 @@ Note:
 * Abract features
 * DL goes from pixels to edges to face detectors
 * how to abstract game board to better play the game
-
 
 
 In AlphaZero we want to ~~classify cats~~ find the best moves
@@ -369,6 +366,7 @@ fast forwarding...
 Note:
 - best topology, shared features
 
+
 ### value head
 ![](value_head.png)
 
@@ -384,6 +382,7 @@ Note:
 - plain old CNNs and FC
 - a probability over the actions
 
+
 ### Loss function - what makes the model happy?
 
 `$ (z-v(s))^2 - \mathbf{\pi \log \mathbf{p}} + c ||\theta||$`
@@ -392,6 +391,12 @@ Note:
 * be more right about your analysis
 * do not change your mind too much
 * standard neural networks regularization
+
+
+### To the code!
+train:
+https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
+
 
 
 ### Q&A
