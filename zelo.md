@@ -258,11 +258,10 @@ Note:
 ### Self Play
 
 
-How can you understand how well you are doing?
+How well am I doing?
 Note:
-we can't have humans in the loop, that's slow
-we can't have other robots, that's what we want to achieve
-
+we can't have humans in the loop => they work at a speed of 1 second per second, that's 45mins per game!\
+we can't have other robots => that's what we want to achieve
 
 1. Clone yourself and fight!<!-- .element: class="fragment" -->
 2. As the Yous battle, observe the fight<!-- .element: class="fragment" -->
@@ -271,7 +270,7 @@ Note:
 easy, clone yoruself
 observe the fight
 learn from that
-
+(next: board games boring)
 
 ![](img/output.gif)
 
@@ -279,16 +278,29 @@ Note:
 board games boring
 
 
-### How is it used in AlphaZero?
+### How is it implemented in python?
 ```python
-   board = game.reset()
-   while not terminal:
-     act = player_mcts.pick_move(board)
-     board, r, terminal, opp_act = game.step(action)
-     training_samples.append((board, player_id, act))
-     training_samples.append((board, opp_id, opp_act))
-  return training_samples
+   def play_against_yourself(game, player_mcts):
+     ...
+     board = game.reset()
+     while not terminal:
+       act = player_mcts.pick_move(board)
+       board, r, terminal, opp_act = game.step(action)
+       training_samples.append((board, player_id, act))
+       training_samples.append((board, opp_id, opp_act))
+    return training_samples
 ```
+Note:
+look at the board\
+ask the monte carlo magic (our policy) what to do next\
+observe our action and the one of our foe
+
+
+### To the code!
+main:
+https://gist.github.com/manuel-delverme/36f9fd220989903274c4badf83c0f880
+train:
+https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
 
 
 
@@ -358,14 +370,6 @@ Note:
 * be more right about your analysis
 * do not change your mind too much
 * standard neural networks regularization
-
-
-### To the code!
-main:
-https://gist.github.com/manuel-delverme/36f9fd220989903274c4badf83c0f880
-train:
-https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
-
 
 
 ### Q&A
