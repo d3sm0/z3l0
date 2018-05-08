@@ -263,6 +263,7 @@ Note:
 we can't have humans in the loop => they work at a speed of 1 second per second, that's 45mins per game!\
 we can't have other robots => that's what we want to achieve
 
+
 1. Clone yourself and fight!<!-- .element: class="fragment" -->
 2. As the Yous battle, observe the fight<!-- .element: class="fragment" -->
 3. Use those experiences to improve further<!-- .element: class="fragment" -->
@@ -271,6 +272,7 @@ easy, clone yoruself
 observe the fight
 learn from that
 (next: board games boring)
+
 
 ![](img/output.gif)
 
@@ -311,6 +313,10 @@ https://gist.github.com/manuel-delverme/a1b6b93bd5b4d607920b045b039fcb98
 
 Note:
 * In general Deep Learning is a tool to go from raw data to abstact features
+* Abract features
+* DL goes from pixels to edges to face detectors
+* how to abstract game board to better play the game
+
 
 
 In AlphaZero we want to ~~classify cats~~ find the best moves
@@ -319,11 +325,7 @@ In AlphaZero we want to ~~classify cats~~ find the best moves
 `$ \pi(s) \text{  and } v(s)$ `
 
 Note:
-More specifically the best move (pi(s)) and how well we are doing (v(s))
-
-Abract features
-DL goes from pixels to edges to face detectors
-how to abstract game board to better play the game
+Our network will have to encode features for the next move (pi(s)) and how well we are doing (v(s))
 
 
 ### The superstar of the newtork
@@ -333,6 +335,9 @@ how to abstract game board to better play the game
 
 Note:
 - You can't be worse than the original so bring the original along
+- ensemble
+- rnn
+
 
 ### Deep Learning - where are the layers? 1/523
 ![](network1.png)
@@ -342,7 +347,15 @@ Note:
 ![](network2.png)
 
 
-### it's-going-to-take-a-while/523
+### it's-going-to-take-a-while 3/523
+![](network2.png)
+
+
+### it's-going-to-take-a-while 4/523
+![](network2.png)
+
+
+### it's-going-to-take-a-while 4/523
 ![](network2.png)
 
 
@@ -353,14 +366,23 @@ fast forwarding...
 ### network heads/523
 ![](network_heads.png)
 
+Note:
+- best topology, shared features
 
 ### value head
 ![](value_head.png)
+
+Note:
+- plain old CNNs and FC
+- 1 to minus 1
 
 
 ### policy head
 ![](policy_head.png)
 
+Note:
+- plain old CNNs and FC
+- a probability over the actions
 
 ### Loss function - what makes the model happy?
 
